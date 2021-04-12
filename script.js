@@ -14,7 +14,8 @@ function writePassword() {
 generateBtn.addEventListener("click", writePassword);
 
 // Array 
-var specialChar = ["!", "@", "#", "$", "%", "^", "\&", "*", "(", ")", "_", "+", "-", "=", "\"", "'", "\\", "", "", "", ""];
+var specialChar = ["!", "@", "#", "$", "%", "^", "\&", "*", "(", ")", "_", "+", "-", "=", " ", "~", "}", "{", "]", "[", "`", "\\"];
+// var specialChar = JSON.stringify(obj);
 var numeric = ["0", "1", "3", "2", "4", "5", "6", "7", "8", "9"];
 var lowerCase = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
 // Lower Case to Upper Case Array
@@ -108,33 +109,8 @@ function generatePassword() {
 // Brewing the password.
   for ( var i = 0 ; i <= passLength ; i++ ) {
     password += passwordCriteria[Math.floor(Math.random() * passwordCriteria.length)];
-  }return(password);
+    password.replace(/&/g, "&amp;").replace(/>/g, "&gt;").replace(/</g, "&lt;").replace(/"/g, "&quot;").replace(/'/g, "&#039");
+  }
+  return(password);
 
 }
-
-
-
-// if ( LCResponse == true ) {
-//   for ( var i = 0; i >= passLength; i++) {
-//     password += lowerCase[Math.floor(Math.random() * lowerCase.length)];
-//     console.log(password);
-//     } return(password);
-//   } else if  (LCResponse == true && UCResponse == false && NUMResponse == false && SCResponse == false) {
-//     for ( var i = 0; i >= passLength; i++) {
-//       password += lowerCase[Math.floor(Math.random() * lowerCase.length)];
-//       console.log(password);
-//       } return(password);
-//   } else if  (LCResponse == true && UCResponse == true && NUMResponse == false && SCResponse == false) {
-//     console.log("kasdjflaskjdf")
-    
-//   } else if (LCResponse == true && UCResponse == true && NUMResponse == true && SCResponse == false) { 
-//   console.log("kasdjflaskjdf")
-  
-//   } else {
-    // for ( var i = 0; i >= passLength; i++) {
-    //   var1 = lowerCase.concat(upperCase, numeric, specialChar);
-    //   password += lowerCase[Math.floor(Math.random() * lowerCase.length)];
-    //   console.log(password);
-    //   } return(password);    
-//   }
-// } 
